@@ -12,7 +12,7 @@ Constraints:
 max_weight > 0
 profit[i] >= 0
 weight[i] >= 0
-Calculate the maximum profit that the shopkeeper can make given maxmum weight that can
+Calculate the maximum profit that the shopkeeper can make given maximum weight that can
 be carried.
 """
 

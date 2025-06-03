@@ -21,54 +21,52 @@ class TestClass(unittest.TestCase):
         assert kp.calc_profit(profit, weight, max_weight) == 210
 
     def test_negative_max_weight(self):
-        """
-        Returns ValueError for any negative max_weight value
-        :return: ValueError
-        """
-        # profit = [10, 20, 30, 40, 50, 60]
-        # weight = [2, 4, 6, 8, 10, 12]
-        # max_weight = -15
-        pytest.raises(ValueError, match="max_weight must greater than zero.")
+        """Returns ``ValueError`` when ``max_weight`` is negative."""
+        profit = [10, 20, 30]
+        weight = [2, 4, 6]
+        max_weight = -1
+        with pytest.raises(
+            ValueError, match="max_weight must greater than zero."
+        ):
+            kp.calc_profit(profit, weight, max_weight)
 
     def test_negative_profit_value(self):
-        """
-        Returns ValueError for any negative profit value in the list
-        :return: ValueError
-        """
-        # profit = [10, -20, 30, 40, 50, 60]
-        # weight = [2, 4, 6, 8, 10, 12]
-        # max_weight = 15
-        pytest.raises(ValueError, match="Weight can not be negative.")
+        """Returns ``ValueError`` for any negative profit value."""
+        profit = [10, -20, 30]
+        weight = [2, 4, 6]
+        max_weight = 15
+        with pytest.raises(ValueError, match="Profit can not be negative."):
+            kp.calc_profit(profit, weight, max_weight)
 
     def test_negative_weight_value(self):
-        """
-        Returns ValueError for any negative weight value in the list
-        :return: ValueError
-        """
-        # profit = [10, 20, 30, 40, 50, 60]
-        # weight = [2, -4, 6, -8, 10, 12]
-        # max_weight = 15
-        pytest.raises(ValueError, match="Profit can not be negative.")
+        """Returns ``ValueError`` for any negative weight value."""
+        profit = [10, 20, 30]
+        weight = [2, -4, 6]
+        max_weight = 15
+        with pytest.raises(
+            ValueError, match="Weight can not be negative."
+        ):
+            kp.calc_profit(profit, weight, max_weight)
 
     def test_null_max_weight(self):
-        """
-        Returns ValueError for any zero max_weight value
-        :return: ValueError
-        """
-        # profit = [10, 20, 30, 40, 50, 60]
-        # weight = [2, 4, 6, 8, 10, 12]
-        # max_weight = null
-        pytest.raises(ValueError, match="max_weight must greater than zero.")
+        """Returns ``ValueError`` when ``max_weight`` is zero."""
+        profit = [10, 20, 30]
+        weight = [2, 4, 6]
+        max_weight = 0
+        with pytest.raises(
+            ValueError, match="max_weight must greater than zero."
+        ):
+            kp.calc_profit(profit, weight, max_weight)
 
     def test_unequal_list_length(self):
-        """
-        Returns IndexError if length of lists (profit and weight) are unequal.
-        :return: IndexError
-        """
-        # profit = [10, 20, 30, 40, 50]
-        # weight = [2, 4, 6, 8, 10, 12]
-        # max_weight = 100
-        pytest.raises(IndexError, match="The length of profit and weight must be same.")
+        """Returns ``ValueError`` if ``profit`` and ``weight`` lengths differ."""
+        profit = [10, 20, 30]
+        weight = [2, 4]
+        max_weight = 10
+        with pytest.raises(
+            ValueError, match="The length of profit and weight must be same."
+        ):
+            kp.calc_profit(profit, weight, max_weight)
 
 
 if __name__ == "__main__":

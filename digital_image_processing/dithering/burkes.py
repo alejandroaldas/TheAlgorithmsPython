@@ -9,7 +9,7 @@ from cv2 import destroyAllWindows, imread, imshow, waitKey
 class Burkes:
     """
     Burke's algorithm is using for converting grayscale image to black and white version
-    Source: Source: https://en.wikipedia.org/wiki/Dither
+    Source: https://en.wikipedia.org/wiki/Dither
 
     Note:
         * Best results are given with threshold= ~1/2 * max greyscale value.
